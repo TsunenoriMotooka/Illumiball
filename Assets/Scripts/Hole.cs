@@ -5,6 +5,28 @@ using UnityEngine;
 public class Hole : MonoBehaviour
 {
     public string targetTag;
+    bool isHolding;
+
+    public bool IsHolding()
+    {
+        return isHolding;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(targetTag))
+        {
+            isHolding = true;
+        }        
+    }
+
+    void OggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(targetTag))
+        {
+            isHolding = false;
+        }        
+    }
 
     void OnTriggerStay(Collider other)
     {
